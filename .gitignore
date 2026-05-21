@@ -1,0 +1,12 @@
+.venv/
+.vscode/
+.west/
+
+bootloader/
+modules/
+tools/
+west-manifest/
+zephyr/
+external/
+
+**/build*/
