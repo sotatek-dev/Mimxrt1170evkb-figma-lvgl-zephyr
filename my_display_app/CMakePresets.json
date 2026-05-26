@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "evkb-display",
+      "displayName": "MIMXRT1170-EVKB display",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/mimxrt1170_evk/mimxrt1176/cm7_B",
+      "cacheVariables": {
+        "BOARD": "mimxrt1170_evk@B/mimxrt1176/cm7",
+        "SHIELD": "rk055hdmipi4ma0"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "evkb-display",
+      "configurePreset": "evkb-display"
+    },
+    {
+      "name": "evkb-display-flash",
+      "configurePreset": "evkb-display",
+      "targets": [
+        "flash"
+      ]
+    }
+  ]
+}

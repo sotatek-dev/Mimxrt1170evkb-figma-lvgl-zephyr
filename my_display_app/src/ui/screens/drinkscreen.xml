@@ -1,0 +1,70 @@
+<screen>
+	<styles>
+		<style name="style_drink_screen" bg_color="0xffffff" bg_opa="100%" pad_all="0" border_width="0" />
+		<style
+			name="style_drink_title"
+			figma_node_id="40:9"
+			bg_color="0xffffff"
+			bg_opa="0%"
+			text_color="0x000000"
+			text_align="center"
+			width="644"
+			height="95"
+		/>
+		<style
+			name="style_drink_name"
+			figma_node_id="40:49"
+			text_color="0x000000"
+			text_align="center"
+			width="112"
+			height="25"
+		/>
+		<style
+			name="style_drink_item"
+			bg_opa="0%"
+			border_width="0"
+			shadow_width="0"
+			pad_all="0"
+		/>
+	</styles>
+
+	<view width="720" height="1280">
+		<style name="style_drink_screen" />
+
+		<lv_label text="Choose Your Drink!" x="38" y="90" width="644" height="95">
+			<style name="style_drink_title" />
+		</lv_label>
+
+		<lv_button x="106" y="260" width="199" height="228" clickable="true">
+			<style name="style_drink_item" />
+			<lv_image src="caramel_frappe" x="0" y="0" />
+			<lv_label text="Caramel Frappe" x="0" y="203" width="199" height="25">
+				<style name="style_drink_name" />
+			</lv_label>
+		</lv_button>
+
+		<lv_button x="415" y="260" width="199" height="228" clickable="true">
+			<style name="style_drink_item" />
+			<lv_image src="latte" x="0" y="0" />
+			<lv_label text="Latte" x="0" y="202" width="199" height="25">
+				<style name="style_drink_name" />
+			</lv_label>
+		</lv_button>
+
+		<lv_button x="106" y="610" width="199" height="225" clickable="true">
+			<style name="style_drink_item" />
+			<lv_image src="mocha_cream" x="0" y="0" />
+			<lv_label text="Mocha Cream" x="2" y="200" width="199" height="25">
+				<style name="style_drink_name" />
+			</lv_label>
+		</lv_button>
+
+		<lv_button x="415" y="610" width="199" height="227" clickable="true">
+			<style name="style_drink_item" />
+			<lv_image src="caramel_macchiato" x="0" y="0" />
+			<lv_label text="Caramel Macchiato" x="1" y="202" width="199" height="25">
+				<style name="style_drink_name" />
+			</lv_label>
+		</lv_button>
+	</view>
+</screen>

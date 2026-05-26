@@ -1,0 +1,46 @@
+<globals>
+    <api>
+        <!-- Add <enumdefs> here -->
+    </api>
+
+    <consts>
+        <!-- Add <px>, <int>, <color> etc here -->
+    </consts>
+
+    <styles>
+        <!-- Add <style> tags here -->
+    </styles>
+
+    <subjects>
+        <!-- Add <int>, <string>, or <float> subjects here -->
+    </subjects>
+
+    <images>
+        <data name="coffee_maker_hero" color_format="argb8888" src_path="images/coffee_maker_hero.png"/>
+        <data name="caramel_frappe" color_format="argb8888" src_path="images/caramel_frappe.png"/>
+        <data name="latte" color_format="argb8888" src_path="images/latte.png"/>
+        <data name="mocha_cream" color_format="argb8888" src_path="images/mocha_cream.png"/>
+        <data name="caramel_macchiato" color_format="argb8888" src_path="images/caramel_macchiato.png"/>
+        <data name="frame_3" color_format="argb8888" src_path="images/frame_3.png"/>
+    </images>
+
+    <fonts>
+        <!-- Add <bin> , <tiny_ttf>, <freetype> tags here -->
+        <bin
+            name="font_brewing"
+            size="48"
+            src_path="fonts/Roboto-Medium.ttf"
+            bpp="4"
+            range="0x20-0x7F"
+            as_file="false"
+        />
+        <bin
+            name="font_status"
+            size="28"
+            src_path="fonts/Roboto-Medium.ttf"
+            bpp="4"
+            range="0x20-0x7F"
+            as_file="false"
+        />
+    </fonts>
+</globals>

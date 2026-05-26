@@ -1,0 +1,18 @@
+set(LV_EDITOR_PROJECT_SOURCES)
+list(
+  APPEND
+  LV_EDITOR_PROJECT_SOURCES
+  ${CMAKE_CURRENT_LIST_DIR}/fonts/font_brewing_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/fonts/font_status_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/caramel_frappe_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/caramel_macchiato_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/coffee_maker_hero_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/frame_3_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/latte_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/mocha_cream_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/real_xml_project_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/real_xml_project.c
+  ${CMAKE_CURRENT_LIST_DIR}/screens/drinkscreen_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/screens/finalscreen_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/screens/homescreen_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/screens/orderscreen_gen.c)
