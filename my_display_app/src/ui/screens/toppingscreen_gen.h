@@ -1,9 +1,9 @@
 /**
- * @file real_xml_project.h
+ * @file toppingscreen_gen.h
  */
 
-#ifndef REAL_XML_PROJECT_H
-#define REAL_XML_PROJECT_H
+#ifndef TOPPINGSCREEN_H
+#define TOPPINGSCREEN_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -13,7 +13,17 @@ extern "C" {
  *      INCLUDES
  *********************/
 
-#include "real_xml_project_gen.h"
+#ifdef LV_LVGL_H_INCLUDE_SIMPLE
+    #include "lvgl.h"
+    #include "lvgl_private.h"
+#else
+    #include "lvgl/lvgl.h"
+    #include "lvgl/lvgl_private.h"
+#endif
+
+#ifdef LV_USE_XML
+    #include "lv_xml/lv_xml.h"
+#endif
 
 /*********************
  *      DEFINES
@@ -24,17 +34,12 @@ extern "C" {
  **********************/
 
 /**********************
- * GLOBAL VARIABLES
- **********************/
-
-/**********************
  * GLOBAL PROTOTYPES
  **********************/
 
-/**
- * Initialize the component library
- */
-void real_xml_project_init(const char * asset_path);
+
+
+lv_obj_t * toppingscreen_create(void);
 
 /**********************
  *      MACROS
@@ -44,4 +49,4 @@ void real_xml_project_init(const char * asset_path);
 } /*extern "C"*/
 #endif
 
-#endif /*REAL_XML_PROJECT_H*/
+#endif /*TOPPINGSCREEN_H*/

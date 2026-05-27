@@ -77,28 +77,25 @@ lv_obj_t * finalscreen_create(void)
 
     lv_obj_t * lv_obj_0 = lv_obj_create(NULL);
     lv_obj_set_name_static(lv_obj_0, "finalscreen_#");
-    lv_obj_set_width(lv_obj_0, 720);
-    lv_obj_set_height(lv_obj_0, 1280);
+    lv_obj_set_width(lv_obj_0, 1280);
+    lv_obj_set_height(lv_obj_0, 720);
 
     lv_obj_add_style(lv_obj_0, &style_final_screen, 0);
     lv_obj_t * lv_image_0 = lv_image_create(lv_obj_0);
     lv_image_set_src(lv_image_0, frame_3);
     lv_obj_set_align(lv_image_0, LV_ALIGN_CENTER);
-    lv_obj_set_width(lv_image_0, 720);
-    lv_obj_set_height(lv_image_0, 1280);
-    lv_image_set_inner_align(lv_image_0, LV_IMAGE_ALIGN_CONTAIN);
     
     lv_obj_t * lv_label_0 = lv_label_create(lv_obj_0);
     lv_label_set_text(lv_label_0, "Thanks for using\nour coffee");
-    lv_obj_set_x(lv_label_0, 115);
-    lv_obj_set_y(lv_label_0, 460);
+    lv_obj_set_x(lv_label_0, 72);
+    lv_obj_set_y(lv_label_0, 236);
     lv_obj_set_width(lv_label_0, 490);
     lv_obj_set_height(lv_label_0, 210);
     lv_obj_add_style(lv_label_0, &style_final_text, 0);
     
     lv_obj_t * lv_button_0 = lv_button_create(lv_obj_0);
-    lv_obj_set_x(lv_button_0, 300);
-    lv_obj_set_y(lv_button_0, 760);
+    lv_obj_set_x(lv_button_0, 245);
+    lv_obj_set_y(lv_button_0, 537);
     lv_obj_set_width(lv_button_0, 119);
     lv_obj_set_height(lv_button_0, 116);
     lv_obj_set_flag(lv_button_0, LV_OBJ_FLAG_CLICKABLE, true);

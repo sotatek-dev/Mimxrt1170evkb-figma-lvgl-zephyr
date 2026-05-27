@@ -60,22 +60,21 @@ lv_obj_t * homescreen_create(void)
 
     lv_obj_t * lv_obj_0 = lv_obj_create(NULL);
     lv_obj_set_name_static(lv_obj_0, "homescreen_#");
-    lv_obj_set_width(lv_obj_0, 720);
-    lv_obj_set_height(lv_obj_0, 1280);
+    lv_obj_set_width(lv_obj_0, 1280);
+    lv_obj_set_height(lv_obj_0, 720);
 
     lv_obj_add_style(lv_obj_0, &style_main, 0);
     lv_obj_t * lv_image_0 = lv_image_create(lv_obj_0);
     lv_image_set_src(lv_image_0, coffee_maker_hero);
     lv_obj_set_align(lv_image_0, LV_ALIGN_CENTER);
-    lv_obj_set_width(lv_image_0, 720);
-    lv_obj_set_height(lv_image_0, 1280);
-    lv_image_set_inner_align(lv_image_0, LV_IMAGE_ALIGN_CONTAIN);
+    lv_obj_set_x(lv_image_0, -4);
+    lv_obj_set_y(lv_image_0, -19);
     
     lv_obj_t * lv_button_0 = lv_button_create(lv_obj_0);
     lv_obj_set_width(lv_button_0, 246);
     lv_obj_set_height(lv_button_0, 43);
-    lv_obj_set_x(lv_button_0, 49);
-    lv_obj_set_y(lv_button_0, 1040);
+    lv_obj_set_x(lv_button_0, 41);
+    lv_obj_set_y(lv_button_0, 579);
     lv_obj_set_flag(lv_button_0, LV_OBJ_FLAG_CLICKABLE, true);
     lv_obj_add_style(lv_button_0, &style_home_button, 0);
     lv_obj_t * lv_label_0 = lv_label_create(lv_button_0);

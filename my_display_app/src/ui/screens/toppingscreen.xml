@@ -1,0 +1,120 @@
+<screen>
+	<styles>
+		<style name="style_topping_screen" figma_node_id="93:6" bg_color="0xffffff" bg_opa="100%" pad_all="0" border_width="0" />
+		<style name="style_topping_image" figma_node_id="93:7" width="640" height="720" radius="0" />
+		<style
+			name="style_topping_label"
+			bg_opa="0%"
+			text_color="0x000000"
+			text_font="font_status"
+			text_align="left"
+			width="120"
+			height="40"
+		/>
+		<style
+			name="style_amount_slider"
+			bg_color="0xdfd4ce"
+			bg_opa="100%"
+			radius="8"
+			pad_all="0"
+			border_width="0"
+			width="296"
+			height="13"
+		/>
+		<style name="style_amount_slider_indicator" bg_color="0x7b3f32" bg_opa="100%" radius="8" />
+		<style
+			name="style_amount_slider_knob"
+			bg_color="0x7b3f32"
+			bg_opa="100%"
+			radius="10"
+			border_width="0"
+			shadow_width="0"
+			pad_all="0"
+			width="20"
+			height="20"
+		/>
+		<style
+			name="style_size_button"
+			bg_color="0xd9d9d9"
+			bg_opa="100%"
+			border_width="0"
+			radius="46"
+			shadow_width="0"
+			pad_all="0"
+			width="92"
+			height="92"
+		/>
+		<style
+			name="style_size_button_checked"
+			bg_color="0x1d9bf0"
+			bg_opa="100%"
+			border_width="0"
+			radius="46"
+			shadow_width="0"
+			pad_all="0"
+			width="92"
+			height="92"
+		/>
+		<style name="style_size_button_text" bg_opa="0%" text_color="0x000000" text_font="font_status" text_align="center" />
+	</styles>
+
+	<view width="1280" height="720">
+		<style name="style_topping_screen" />
+
+		<lv_label text="Coffee" x="32" y="112" width="120" height="40">
+			<style name="style_topping_label" />
+		</lv_label>
+		<lv_slider name="coffee_slider" x="168" y="126" width="296" height="13" value="38" orientation="horizontal" clickable="true" ext_click_area="22">
+			<style name="style_amount_slider" />
+			<style name="style_amount_slider_indicator" selector="indicator" />
+			<style name="style_amount_slider_knob" selector="knob" />
+		</lv_slider>
+
+		<lv_label text="Sugar" x="32" y="250" width="120" height="40">
+			<style name="style_topping_label" />
+		</lv_label>
+		<lv_slider name="sugar_slider" x="168" y="264" width="296" height="13" value="38" orientation="horizontal" clickable="true" ext_click_area="22">
+			<style name="style_amount_slider" />
+			<style name="style_amount_slider_indicator" selector="indicator" />
+			<style name="style_amount_slider_knob" selector="knob" />
+		</lv_slider>
+
+		<lv_label text="Ice" x="32" y="392" width="120" height="40">
+			<style name="style_topping_label" />
+		</lv_label>
+		<lv_slider name="ice_slider" x="168" y="406" width="296" height="13" value="38" orientation="horizontal" clickable="true" ext_click_area="22">
+			<style name="style_amount_slider" />
+			<style name="style_amount_slider_indicator" selector="indicator" />
+			<style name="style_amount_slider_knob" selector="knob" />
+		</lv_slider>
+
+		<lv_label text="Size" x="32" y="565" width="90" height="40">
+			<style name="style_topping_label" />
+		</lv_label>
+		<lv_button name="size_small_button" x="141" y="532" width="92" height="92" clickable="true" checked="true">
+			<style name="style_size_button" />
+			<style name="style_size_button_checked" selector="checked" />
+			<lv_label text="S" align="center">
+				<style name="style_size_button_text" />
+			</lv_label>
+		</lv_button>
+		<lv_button name="size_medium_button" x="280" y="532" width="92" height="92" clickable="true">
+			<style name="style_size_button" />
+			<style name="style_size_button_checked" selector="checked" />
+			<lv_label text="M" align="center">
+				<style name="style_size_button_text" />
+			</lv_label>
+		</lv_button>
+		<lv_button name="size_large_button" x="418" y="532" width="92" height="92" clickable="true">
+			<style name="style_size_button" />
+			<style name="style_size_button_checked" selector="checked" />
+			<lv_label text="L" align="center">
+				<style name="style_size_button_text" />
+			</lv_label>
+		</lv_button>
+
+		<lv_image name="topping_image" src="caramel_macchiato" x="640" y="0" width="640" height="720" inner_align="stretch">
+			<style name="style_topping_image" />
+		</lv_image>
+	</view>
+</screen>

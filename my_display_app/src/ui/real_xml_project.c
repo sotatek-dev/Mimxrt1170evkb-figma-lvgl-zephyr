@@ -38,7 +38,3 @@ void real_xml_project_init(const char * asset_path)
 
     /* Add your own custom code here if needed */
 }
-
-/**********************
- *   STATIC FUNCTIONS
- **********************/

@@ -39,10 +39,30 @@
 LOG_MODULE_REGISTER(app, CONFIG_LOG_DEFAULT_LEVEL);
 
 #define LVGL_MAX_SLEEP_MS 5U
+#define APP_DISPLAY_ROTATION LV_DISPLAY_ROTATION_90
+
+BUILD_ASSERT(IS_ENABLED(CONFIG_MCUX_ELCDIF_PXP) &&
+	     IS_ENABLED(CONFIG_MCUX_ELCDIF_PXP_ROTATE_270),
+	     "Landscape LVGL rotation requires eLCDIF PXP rotate 270");
 
 #ifdef APP_HAS_GENERATED_UI
 lv_ui guider_ui;
 #endif
+
+static void app_display_configure_landscape(void)
+{
+	lv_display_t *display = lv_display_get_default();
+
+	if (display == NULL) {
+		LOG_ERR("LVGL display is not ready");
+		return;
+	}
+
+	lv_display_set_rotation(display, APP_DISPLAY_ROTATION);
+	LOG_INF("LVGL logical display: %dx%d",
+		(int)lv_display_get_horizontal_resolution(display),
+		(int)lv_display_get_vertical_resolution(display));
+}
 
 #ifdef APP_HAS_SQUARELINE_UI
 struct app_home_slider_binding {
@@ -218,6 +238,8 @@ int main(void)
 		LOG_ERR("Display device is not ready");
 		return 0;
 	}
+
+	app_display_configure_landscape();
 
 #ifdef APP_HAS_FRAME_UI
 	ui_frame_1_init();

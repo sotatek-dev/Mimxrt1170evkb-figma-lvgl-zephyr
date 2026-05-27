@@ -87,33 +87,33 @@ lv_obj_t * orderscreen_create(void)
 
     lv_obj_t * lv_obj_0 = lv_obj_create(NULL);
     lv_obj_set_name_static(lv_obj_0, "orderscreen_#");
-    lv_obj_set_width(lv_obj_0, 720);
-    lv_obj_set_height(lv_obj_0, 1280);
+    lv_obj_set_width(lv_obj_0, 1280);
+    lv_obj_set_height(lv_obj_0, 720);
 
     lv_obj_add_style(lv_obj_0, &style_order_screen, 0);
     lv_obj_t * lv_label_0 = lv_label_create(lv_obj_0);
     lv_label_set_text(lv_label_0, "Brewing");
-    lv_obj_set_x(lv_label_0, 40);
-    lv_obj_set_y(lv_label_0, 350);
-    lv_obj_set_width(lv_label_0, 320);
+    lv_obj_set_x(lv_label_0, 217);
+    lv_obj_set_y(lv_label_0, 128);
+    lv_obj_set_width(lv_label_0, 344);
     lv_obj_set_height(lv_label_0, 112);
     lv_obj_add_style(lv_label_0, &style_brewing_text, 0);
     
     lv_obj_t * brew_progress_bar = lv_bar_create(lv_obj_0);
     lv_obj_set_name(brew_progress_bar, "brew_progress_bar");
-    lv_obj_set_x(brew_progress_bar, 40);
-    lv_obj_set_y(brew_progress_bar, 500);
-    lv_obj_set_width(brew_progress_bar, 300);
+    lv_obj_set_x(brew_progress_bar, 171);
+    lv_obj_set_y(brew_progress_bar, 273);
+    lv_obj_set_width(brew_progress_bar, 285);
     lv_obj_set_height(brew_progress_bar, 16);
-    lv_bar_set_value(brew_progress_bar, 0, false);
+    lv_bar_set_value(brew_progress_bar, 35, false);
     lv_obj_add_style(brew_progress_bar, &style_progress_bar, 0);
     lv_obj_add_style(brew_progress_bar, &style_progress_indicator, LV_PART_INDICATOR);
     
     lv_obj_t * brew_progress_status = lv_label_create(lv_obj_0);
     lv_obj_set_name(brew_progress_status, "brew_progress_status");
-    lv_label_set_text(brew_progress_status, "Add coffee...");
-    lv_obj_set_x(brew_progress_status, 40);
-    lv_obj_set_y(brew_progress_status, 580);
+    lv_label_set_text(brew_progress_status, "Add Coffee...");
+    lv_obj_set_x(brew_progress_status, 223);
+    lv_obj_set_y(brew_progress_status, 436);
     lv_obj_set_width(brew_progress_status, 241);
     lv_obj_set_height(brew_progress_status, 70);
     lv_obj_add_style(brew_progress_status, &style_progress_status, 0);
@@ -121,11 +121,10 @@ lv_obj_t * orderscreen_create(void)
     lv_obj_t * selected_drink_image = lv_image_create(lv_obj_0);
     lv_obj_set_name(selected_drink_image, "selected_drink_image");
     lv_image_set_src(selected_drink_image, caramel_frappe);
-    lv_obj_set_x(selected_drink_image, 360);
+    lv_obj_set_x(selected_drink_image, 640);
     lv_obj_set_y(selected_drink_image, 0);
-    lv_obj_set_width(selected_drink_image, 360);
-    lv_obj_set_height(selected_drink_image, 1280);
-    lv_image_set_inner_align(selected_drink_image, LV_IMAGE_ALIGN_CONTAIN);
+    lv_obj_set_width(selected_drink_image, 640);
+    lv_obj_set_height(selected_drink_image, 720);
     lv_obj_add_style(selected_drink_image, &style_selected_drink_image, 0);
 
     LV_TRACE_OBJ_CREATE("finished");

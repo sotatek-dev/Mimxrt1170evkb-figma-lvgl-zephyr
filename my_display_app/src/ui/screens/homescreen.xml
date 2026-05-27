@@ -14,11 +14,11 @@
 		/>
 	</styles>
 
-	<view width="720" height="1280">
+	<view width="1280" height="720">
 		<style name="style_main" />
 
-		<lv_image src="coffee_maker_hero" align="center" width="720" height="1280" inner_align="contain" />
-		<lv_button width="246" height="43" x="49" y="1040" clickable="true">
+		<lv_image src="coffee_maker_hero" align="center" x="-4" y="-19" />
+		<lv_button width="246" height="43" x="41" y="579" clickable="true">
 			<style name="style_home_button" />
 			<lv_label text="Start brewing today." align="center" />
 		</lv_button>

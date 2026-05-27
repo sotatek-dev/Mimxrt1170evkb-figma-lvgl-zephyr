@@ -19,5 +19,5 @@
 # =============================================================================
 
 list(APPEND LV_EDITOR_PROJECT_SOURCES
-    ${CMAKE_CURRENT_LIST_DIR}/app_ui.c
+    # ${CMAKE_CURRENT_LIST_DIR}/my_file.c
 )

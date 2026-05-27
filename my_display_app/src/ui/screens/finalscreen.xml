@@ -27,14 +27,14 @@
 		<style name="style_final_arrow" bg_opa="0%" text_color="0x0023c7" text_align="center" />
 	</styles>
 
-	<view width="720" height="1280">
+	<view width="1280" height="720">
 		<style name="style_final_screen" />
 
-		<lv_image src="frame_3" align="center" width="720" height="1280" inner_align="contain" />
-		<lv_label text="Thanks for using&#10;our coffee" x="115" y="460" width="490" height="210">
+		<lv_image src="frame_3" align="center" />
+		<lv_label text="Thanks for using&#10;our coffee" x="72" y="236" width="490" height="210">
 			<style name="style_final_text" />
 		</lv_label>
-		<lv_button x="300" y="760" width="119" height="116" clickable="true">
+		<lv_button x="245" y="537" width="119" height="116" clickable="true">
 			<style name="style_final_button" />
 			<lv_label text="Menu" align="center">
 				<style name="style_final_arrow" />

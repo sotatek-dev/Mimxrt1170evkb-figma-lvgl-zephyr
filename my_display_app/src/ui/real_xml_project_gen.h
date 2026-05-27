@@ -101,6 +101,7 @@ void real_xml_project_init_gen(const char * asset_path);
 #include "screens/finalscreen_gen.h"
 #include "screens/homescreen_gen.h"
 #include "screens/orderscreen_gen.h"
+#include "screens/toppingscreen_gen.h"
 
 #ifdef __cplusplus
 } /*extern "C"*/

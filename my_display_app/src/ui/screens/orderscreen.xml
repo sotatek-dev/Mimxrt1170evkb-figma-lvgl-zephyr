@@ -42,23 +42,23 @@
 		<style name="style_selected_drink_image" radius="0" />
 	</styles>
 
-	<view width="720" height="1280">
+	<view width="1280" height="720">
 		<style name="style_order_screen" />
 
-		<lv_label text="Brewing" x="40" y="350" width="320" height="112">
+		<lv_label text="Brewing" x="217" y="128" width="344" height="112">
 			<style name="style_brewing_text" />
 		</lv_label>
 
-		<lv_bar name="brew_progress_bar" x="40" y="500" width="300" height="16" value="0">
+		<lv_bar name="brew_progress_bar" x="171" y="273" width="285" height="16" value="35">
 			<style name="style_progress_bar" />
 			<style name="style_progress_indicator" selector="indicator" />
 		</lv_bar>
 
-		<lv_label name="brew_progress_status" text="Add coffee..." x="40" y="580" width="241" height="70">
+		<lv_label name="brew_progress_status" text="Add Coffee..." x="223" y="436" width="241" height="70">
 			<style name="style_progress_status" />
 		</lv_label>
 
-		<lv_image name="selected_drink_image" src="caramel_frappe" x="360" y="0" width="360" height="1280" inner_align="contain">
+		<lv_image name="selected_drink_image" src="caramel_frappe" x="640" y="0" width="640" height="720">
 			<style name="style_selected_drink_image" />
 		</lv_image>
 	</view>

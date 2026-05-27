@@ -73,21 +73,21 @@ lv_obj_t * drinkscreen_create(void)
 
     lv_obj_t * lv_obj_0 = lv_obj_create(NULL);
     lv_obj_set_name_static(lv_obj_0, "drinkscreen_#");
-    lv_obj_set_width(lv_obj_0, 720);
-    lv_obj_set_height(lv_obj_0, 1280);
+    lv_obj_set_width(lv_obj_0, 1280);
+    lv_obj_set_height(lv_obj_0, 720);
 
     lv_obj_add_style(lv_obj_0, &style_drink_screen, 0);
     lv_obj_t * lv_label_0 = lv_label_create(lv_obj_0);
     lv_label_set_text(lv_label_0, "Choose Your Drink!");
-    lv_obj_set_x(lv_label_0, 38);
-    lv_obj_set_y(lv_label_0, 90);
+    lv_obj_set_x(lv_label_0, 318);
+    lv_obj_set_y(lv_label_0, 78);
     lv_obj_set_width(lv_label_0, 644);
     lv_obj_set_height(lv_label_0, 95);
     lv_obj_add_style(lv_label_0, &style_drink_title, 0);
     
     lv_obj_t * lv_button_0 = lv_button_create(lv_obj_0);
-    lv_obj_set_x(lv_button_0, 106);
-    lv_obj_set_y(lv_button_0, 260);
+    lv_obj_set_x(lv_button_0, 282);
+    lv_obj_set_y(lv_button_0, 170);
     lv_obj_set_width(lv_button_0, 199);
     lv_obj_set_height(lv_button_0, 228);
     lv_obj_set_flag(lv_button_0, LV_OBJ_FLAG_CLICKABLE, true);
@@ -106,8 +106,8 @@ lv_obj_t * drinkscreen_create(void)
     lv_obj_add_style(lv_label_1, &style_drink_name, 0);
     
     lv_obj_t * lv_button_1 = lv_button_create(lv_obj_0);
-    lv_obj_set_x(lv_button_1, 415);
-    lv_obj_set_y(lv_button_1, 260);
+    lv_obj_set_x(lv_button_1, 786);
+    lv_obj_set_y(lv_button_1, 170);
     lv_obj_set_width(lv_button_1, 199);
     lv_obj_set_height(lv_button_1, 228);
     lv_obj_set_flag(lv_button_1, LV_OBJ_FLAG_CLICKABLE, true);
@@ -126,8 +126,8 @@ lv_obj_t * drinkscreen_create(void)
     lv_obj_add_style(lv_label_2, &style_drink_name, 0);
     
     lv_obj_t * lv_button_2 = lv_button_create(lv_obj_0);
-    lv_obj_set_x(lv_button_2, 106);
-    lv_obj_set_y(lv_button_2, 610);
+    lv_obj_set_x(lv_button_2, 282);
+    lv_obj_set_y(lv_button_2, 444);
     lv_obj_set_width(lv_button_2, 199);
     lv_obj_set_height(lv_button_2, 225);
     lv_obj_set_flag(lv_button_2, LV_OBJ_FLAG_CLICKABLE, true);
@@ -146,8 +146,8 @@ lv_obj_t * drinkscreen_create(void)
     lv_obj_add_style(lv_label_3, &style_drink_name, 0);
     
     lv_obj_t * lv_button_3 = lv_button_create(lv_obj_0);
-    lv_obj_set_x(lv_button_3, 415);
-    lv_obj_set_y(lv_button_3, 610);
+    lv_obj_set_x(lv_button_3, 786);
+    lv_obj_set_y(lv_button_3, 444);
     lv_obj_set_width(lv_button_3, 199);
     lv_obj_set_height(lv_button_3, 227);
     lv_obj_set_flag(lv_button_3, LV_OBJ_FLAG_CLICKABLE, true);

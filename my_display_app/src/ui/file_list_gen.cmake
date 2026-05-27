@@ -15,4 +15,5 @@ list(
   ${CMAKE_CURRENT_LIST_DIR}/screens/drinkscreen_gen.c
   ${CMAKE_CURRENT_LIST_DIR}/screens/finalscreen_gen.c
   ${CMAKE_CURRENT_LIST_DIR}/screens/homescreen_gen.c
-  ${CMAKE_CURRENT_LIST_DIR}/screens/orderscreen_gen.c)
+  ${CMAKE_CURRENT_LIST_DIR}/screens/orderscreen_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/screens/toppingscreen_gen.c)

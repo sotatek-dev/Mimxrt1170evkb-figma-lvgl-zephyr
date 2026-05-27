@@ -9,6 +9,16 @@ project(my_display_app)
 target_sources(app PRIVATE src/main.c)
 target_compile_definitions(app PRIVATE LV_LVGL_H_INCLUDE_SIMPLE=1)
 
+set(APP_UI_RUNTIME_SOURCES
+    src/app_ui.c
+    src/ui_runtime/app_ui_helpers.c
+    src/ui_runtime/home_screen_controller.c
+    src/ui_runtime/drink_screen_controller.c
+    src/ui_runtime/topping_screen_controller.c
+    src/ui_runtime/order_screen_controller.c
+    src/ui_runtime/final_screen_controller.c
+)
+
 set(UI_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/ui)
 set(UI_SQUARELINE_FILE ${UI_DIR}/ui.c)
 set(UI_LV_EDITOR_FILE_LIST ${UI_DIR}/file_list_gen.cmake)
@@ -36,6 +46,8 @@ elseif(EXISTS ${UI_LV_EDITOR_FILE_LIST})
     include(${UI_DIR}/user_config.cmake OPTIONAL)
 
     target_include_directories(app PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/ui_runtime
         ${UI_DIR}
     )
 
@@ -43,6 +55,7 @@ elseif(EXISTS ${UI_LV_EDITOR_FILE_LIST})
     if(EXISTS ${UI_LV_EDITOR_ENTRY} AND EXISTS ${UI_DIR}/testtool.h)
         target_compile_definitions(app PRIVATE APP_HAS_LV_EDITOR_UI=1)
     else()
+        target_sources(app PRIVATE ${APP_UI_RUNTIME_SOURCES})
         target_compile_definitions(app PRIVATE APP_HAS_REAL_XML_UI=1)
     endif()
 else()
