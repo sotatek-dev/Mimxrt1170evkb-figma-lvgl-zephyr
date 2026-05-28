@@ -38,27 +38,6 @@ void app_prepare_screen(lv_obj_t * screen)
     lv_obj_set_scrollbar_mode(screen, LV_SCROLLBAR_MODE_OFF);
 }
 
-void app_configure_background(lv_obj_t * screen, const void * src)
-{
-    lv_obj_t * background;
-
-    if (screen == NULL) {
-        return;
-    }
-
-    background = lv_obj_get_child_by_type(screen, 0, &lv_image_class);
-    if (background == NULL) {
-        return;
-    }
-
-    lv_image_set_src(background, src);
-    lv_obj_set_size(background, APP_UI_SCREEN_WIDTH, APP_UI_SCREEN_HEIGHT);
-    lv_obj_set_align(background, LV_ALIGN_CENTER);
-    lv_obj_set_pos(background, 0, 0);
-    lv_image_set_inner_align(background, LV_IMAGE_ALIGN_CONTAIN);
-    lv_obj_clear_flag(background, LV_OBJ_FLAG_CLICKABLE);
-}
-
 const void * app_drink_image(const struct app_drink * drink)
 {
     if (drink == NULL) {

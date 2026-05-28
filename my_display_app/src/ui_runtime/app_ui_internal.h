@@ -74,7 +74,6 @@ extern const struct app_drink app_drinks[APP_DRINK_COUNT];
 
 void app_ui_context_init(struct app_ui_context * ctx);
 void app_prepare_screen(lv_obj_t * screen);
-void app_configure_background(lv_obj_t * screen, const void * src);
 const void * app_drink_image(const struct app_drink * drink);
 const char * app_drink_name(const struct app_drink * drink);
 const char * app_drink_size_name(enum app_drink_size size);

@@ -29,11 +29,6 @@ static void app_topping_update_image(void)
     }
 
     lv_image_set_src(topping_image, app_drink_image(topping_ctx->selected_drink));
-    lv_obj_set_x(topping_image, 640);
-    lv_obj_set_y(topping_image, 0);
-    lv_obj_set_width(topping_image, 640);
-    lv_obj_set_height(topping_image, 720);
-    lv_image_set_inner_align(topping_image, LV_IMAGE_ALIGN_CONTAIN);
 }
 
 static void app_topping_set_size(enum app_drink_size size)

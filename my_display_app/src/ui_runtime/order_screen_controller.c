@@ -8,7 +8,6 @@
 #define BREW_STEP_VALUE 2U
 
 static struct app_ui_context * order_ctx;
-static lv_obj_t * order_drink_name_label;
 static lv_obj_t * order_progress_bar;
 static lv_obj_t * order_status_label;
 static lv_obj_t * order_drink_image;
@@ -53,11 +52,6 @@ static void app_order_update_selected_drink(void)
         lv_image_set_src(order_drink_image,
                          app_drink_image(order_ctx->selected_drink));
     }
-
-    if (order_drink_name_label != NULL) {
-        lv_label_set_text(order_drink_name_label,
-                          app_drink_name(order_ctx->selected_drink));
-    }
 }
 
 static void app_brew_timer_cb(lv_timer_t * timer)
@@ -81,8 +75,6 @@ static void app_brew_timer_cb(lv_timer_t * timer)
 
 void app_order_screen_bind(struct app_ui_context * ctx)
 {
-    lv_obj_t * title_label;
-
     if (ctx == NULL || ctx->screens.order == NULL) {
         return;
     }
@@ -90,8 +82,6 @@ void app_order_screen_bind(struct app_ui_context * ctx)
     order_ctx = ctx;
     app_prepare_screen(ctx->screens.order);
 
-    title_label = lv_obj_get_child_by_type(ctx->screens.order, 0,
-                                           &lv_label_class);
     order_progress_bar = lv_obj_find_by_name(ctx->screens.order,
                                              "brew_progress_bar");
     order_status_label = lv_obj_find_by_name(ctx->screens.order,
@@ -99,45 +89,8 @@ void app_order_screen_bind(struct app_ui_context * ctx)
     order_drink_image = lv_obj_find_by_name(ctx->screens.order,
                                             "selected_drink_image");
 
-    if (title_label != NULL) {
-        lv_label_set_text(title_label, "BREWING");
-        lv_obj_set_x(title_label, 80);
-        lv_obj_set_y(title_label, 210);
-        lv_obj_set_width(title_label, 320);
-        lv_obj_set_height(title_label, 120);
-    }
-
-    order_drink_name_label = lv_label_create(ctx->screens.order);
-    lv_label_set_text(order_drink_name_label, app_drink_name(ctx->selected_drink));
-    lv_obj_set_x(order_drink_name_label, 80);
-    lv_obj_set_y(order_drink_name_label, 315);
-    lv_obj_set_width(order_drink_name_label, 300);
-    lv_obj_set_height(order_drink_name_label, 54);
-    lv_obj_set_style_text_color(order_drink_name_label, lv_color_hex(0xffffff), 0);
-    lv_obj_set_style_text_font(order_drink_name_label, font_status, 0);
-    lv_obj_set_style_text_align(order_drink_name_label, LV_TEXT_ALIGN_LEFT, 0);
-
     if (order_progress_bar != NULL) {
-        lv_obj_set_x(order_progress_bar, 80);
-        lv_obj_set_y(order_progress_bar, 380);
-        lv_obj_set_width(order_progress_bar, 300);
-        lv_obj_set_height(order_progress_bar, 16);
         lv_bar_set_range(order_progress_bar, 0, 100);
-    }
-
-    if (order_status_label != NULL) {
-        lv_obj_set_x(order_status_label, 80);
-        lv_obj_set_y(order_status_label, 440);
-        lv_obj_set_width(order_status_label, 300);
-        lv_obj_set_height(order_status_label, 80);
-    }
-
-    if (order_drink_image != NULL) {
-        lv_obj_set_x(order_drink_image, 760);
-        lv_obj_set_y(order_drink_image, 150);
-        lv_obj_set_width(order_drink_image, 420);
-        lv_obj_set_height(order_drink_image, 420);
-        lv_image_set_inner_align(order_drink_image, LV_IMAGE_ALIGN_CONTAIN);
     }
 
     app_order_update_progress(LV_ANIM_OFF);
