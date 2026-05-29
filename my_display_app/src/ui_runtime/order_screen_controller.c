@@ -6,6 +6,7 @@
 
 #define BREW_STEP_PERIOD_MS 100U
 #define BREW_STEP_VALUE 2U
+#define BREW_STEP_COUNT 3U
 
 static struct app_ui_context * order_ctx;
 static lv_obj_t * order_progress_bar;
@@ -14,21 +15,71 @@ static lv_obj_t * order_drink_image;
 static lv_timer_t * brew_timer;
 static uint8_t brew_progress;
 
-static const char * app_brew_status_text(uint8_t progress)
+struct app_brew_step {
+    const char * name;
+    int32_t percentage;
+};
+
+static uint8_t app_order_get_brew_steps(struct app_brew_step * steps,
+                                        uint8_t max_steps)
 {
-    if (progress < 25U) {
-        return "Add coffee...";
+    uint8_t count = 0U;
+
+    if (order_ctx == NULL || steps == NULL || max_steps == 0U) {
+        return 0U;
     }
 
-    if (progress < 50U) {
-        return "Add Milk...";
+    if (order_ctx->toppings.coffee > 0 && count < max_steps) {
+        steps[count++] = (struct app_brew_step) {
+            .name = "Coffee",
+            .percentage = order_ctx->toppings.coffee,
+        };
     }
 
-    if (progress < 75U) {
-        return "Some Ice ...";
+    if (order_ctx->toppings.sugar > 0 && count < max_steps) {
+        steps[count++] = (struct app_brew_step) {
+            .name = "Milk",
+            .percentage = order_ctx->toppings.sugar,
+        };
     }
 
-    return "Packing...";
+    if (order_ctx->toppings.ice > 0 && count < max_steps) {
+        steps[count++] = (struct app_brew_step) {
+            .name = "Ice",
+            .percentage = order_ctx->toppings.ice,
+        };
+    }
+
+    return count;
+}
+
+static void app_order_update_status_label(void)
+{
+    struct app_brew_step steps[BREW_STEP_COUNT];
+    uint8_t step_count;
+    uint8_t segment_count;
+    uint8_t segment;
+
+    if (order_status_label == NULL) {
+        return;
+    }
+
+    step_count = app_order_get_brew_steps(steps, BREW_STEP_COUNT);
+    segment_count = step_count + 1U;
+    segment = (uint8_t)(((uint32_t)brew_progress * segment_count) / 100U);
+
+    if (segment >= segment_count) {
+        segment = segment_count - 1U;
+    }
+
+    if (segment < step_count) {
+        lv_label_set_text_fmt(order_status_label, "Add %d%% %s",
+                              (int)steps[segment].percentage,
+                              steps[segment].name);
+        return;
+    }
+
+    lv_label_set_text(order_status_label, "Packing...");
 }
 
 static void app_order_update_progress(lv_anim_enable_t anim)
@@ -38,7 +89,7 @@ static void app_order_update_progress(lv_anim_enable_t anim)
     }
 
     if (order_status_label != NULL) {
-        lv_label_set_text(order_status_label, app_brew_status_text(brew_progress));
+        app_order_update_status_label();
     }
 }
 

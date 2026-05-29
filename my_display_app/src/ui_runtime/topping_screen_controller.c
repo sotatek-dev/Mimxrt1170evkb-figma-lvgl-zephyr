@@ -6,6 +6,11 @@
 
 #define TOPPING_BREW_BUTTON_WIDTH 296
 #define TOPPING_BREW_BUTTON_HEIGHT 48
+#define TOPPING_SLIDER_TOUCH_PAD 56
+#define TOPPING_PERCENT_LABEL_WIDTH 72
+#define TOPPING_PERCENT_LABEL_HEIGHT 32
+#define TOPPING_PERCENT_LABEL_X_GAP 24
+#define TOPPING_PERCENT_LABEL_Y_OFFSET -10
 
 #if APP_HAS_TOPPING_SCREEN
 static struct app_ui_context * topping_ctx;
@@ -17,6 +22,9 @@ static lv_obj_t * size_small_button;
 static lv_obj_t * size_medium_button;
 static lv_obj_t * size_large_button;
 static lv_obj_t * topping_brew_button;
+static lv_obj_t * coffee_percent_label;
+static lv_obj_t * sugar_percent_label;
+static lv_obj_t * ice_percent_label;
 
 static const enum app_drink_size app_size_small = APP_DRINK_SIZE_SMALL;
 static const enum app_drink_size app_size_medium = APP_DRINK_SIZE_MEDIUM;
@@ -74,11 +82,46 @@ static void app_topping_read_controls(void)
     }
 }
 
+static void app_topping_update_percent_labels(void)
+{
+    if (topping_ctx == NULL) {
+        return;
+    }
+
+    if (coffee_percent_label != NULL) {
+        lv_label_set_text_fmt(coffee_percent_label, "%d%%",
+                              (int)topping_ctx->toppings.coffee);
+    }
+
+    if (sugar_percent_label != NULL) {
+        lv_label_set_text_fmt(sugar_percent_label, "%d%%",
+                              (int)topping_ctx->toppings.sugar);
+    }
+
+    if (ice_percent_label != NULL) {
+        lv_label_set_text_fmt(ice_percent_label, "%d%%",
+                              (int)topping_ctx->toppings.ice);
+    }
+}
+
 static void app_topping_slider_changed_cb(lv_event_t * event)
 {
-    (void)event;
+    lv_event_code_t code = lv_event_get_code(event);
+    lv_obj_t * slider = lv_event_get_target(event);
 
-    app_topping_read_controls();
+    if (code == LV_EVENT_VALUE_CHANGED) {
+        app_topping_read_controls();
+        app_topping_update_percent_labels();
+        return;
+    }
+
+    if (code == LV_EVENT_RELEASED || code == LV_EVENT_PRESS_LOST ||
+        code == LV_EVENT_LEAVE || code == LV_EVENT_DEFOCUSED) {
+        app_topping_read_controls();
+        app_topping_update_percent_labels();
+        lv_obj_remove_state(slider, LV_STATE_PRESSED | LV_STATE_FOCUSED |
+                            LV_STATE_EDITED | LV_STATE_FOCUS_KEY);
+    }
 }
 
 static void app_topping_size_clicked_cb(lv_event_t * event)
@@ -116,6 +159,7 @@ static void app_topping_reset_controls(void)
 
     app_topping_set_size(APP_DRINK_SIZE_SMALL);
     app_topping_update_image();
+    app_topping_update_percent_labels();
 }
 
 static lv_obj_t * app_topping_create_brew_button(void)
@@ -143,6 +187,43 @@ static lv_obj_t * app_topping_create_brew_button(void)
     lv_obj_set_style_text_font(label, font_status, 0);
 
     return button;
+}
+
+static lv_obj_t * app_topping_create_percent_label(lv_obj_t * slider)
+{
+    lv_obj_t * label;
+
+    if (topping_ctx == NULL || slider == NULL) {
+        return NULL;
+    }
+
+    label = lv_label_create(topping_ctx->screens.topping);
+    lv_obj_set_width(label, TOPPING_PERCENT_LABEL_WIDTH);
+    lv_obj_set_height(label, TOPPING_PERCENT_LABEL_HEIGHT);
+    lv_obj_set_x(label, lv_obj_get_x(slider) + lv_obj_get_width(slider) +
+                 TOPPING_PERCENT_LABEL_X_GAP);
+    lv_obj_set_y(label, lv_obj_get_y(slider) + TOPPING_PERCENT_LABEL_Y_OFFSET);
+    lv_obj_set_style_text_color(label, lv_color_hex(0x000000), 0);
+    lv_obj_set_style_text_font(label, font_status, 0);
+    lv_obj_set_style_text_align(label, LV_TEXT_ALIGN_LEFT, 0);
+
+    return label;
+}
+
+static void app_topping_configure_slider(lv_obj_t * slider)
+{
+    if (slider == NULL) {
+        return;
+    }
+
+    lv_obj_set_ext_click_area(slider, TOPPING_SLIDER_TOUCH_PAD);
+    lv_obj_add_flag(slider, LV_OBJ_FLAG_PRESS_LOCK);
+    lv_obj_remove_flag(slider, LV_OBJ_FLAG_CLICK_FOCUSABLE |
+                       LV_OBJ_FLAG_SCROLL_ON_FOCUS);
+    lv_obj_remove_state(slider, LV_STATE_PRESSED | LV_STATE_FOCUSED |
+                        LV_STATE_EDITED | LV_STATE_FOCUS_KEY);
+    lv_obj_add_event_cb(slider, app_topping_slider_changed_cb, LV_EVENT_ALL,
+                        NULL);
 }
 
 static void app_topping_brew_clicked_cb(lv_event_t * event)
@@ -189,20 +270,13 @@ void app_topping_screen_bind(struct app_ui_context * ctx)
     topping_brew_button = lv_obj_find_by_name(ctx->screens.topping,
                                               "brew_button");
 
-    if (coffee_slider != NULL) {
-        lv_obj_add_event_cb(coffee_slider, app_topping_slider_changed_cb,
-                            LV_EVENT_VALUE_CHANGED, NULL);
-    }
+    coffee_percent_label = app_topping_create_percent_label(coffee_slider);
+    sugar_percent_label = app_topping_create_percent_label(sugar_slider);
+    ice_percent_label = app_topping_create_percent_label(ice_slider);
 
-    if (sugar_slider != NULL) {
-        lv_obj_add_event_cb(sugar_slider, app_topping_slider_changed_cb,
-                            LV_EVENT_VALUE_CHANGED, NULL);
-    }
-
-    if (ice_slider != NULL) {
-        lv_obj_add_event_cb(ice_slider, app_topping_slider_changed_cb,
-                            LV_EVENT_VALUE_CHANGED, NULL);
-    }
+    app_topping_configure_slider(coffee_slider);
+    app_topping_configure_slider(sugar_slider);
+    app_topping_configure_slider(ice_slider);
 
     if (size_small_button != NULL) {
         lv_obj_add_event_cb(size_small_button, app_topping_size_clicked_cb,
